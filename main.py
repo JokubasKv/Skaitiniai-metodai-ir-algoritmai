@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+
 plt.style.use('ggplot')
 
 
@@ -34,7 +35,25 @@ def scan_root_intervals(all_roots_interval, step=0.1):
     return results
 
 
-show_intervals([[-8.64, +5.5869]], 'Starting interval')
+def chord_method(interval, tolerance=1e-8):
+    x_n = interval[0]
+    x_n1 = interval[1]
+    x_mid = 0
+
+    while abs(f(x_mid)) > tolerance:
+        k = abs(f(x_n) / f(x_n1))
+        x_mid = (x_n + k * x_n1) / (1 + k)
+        if f(x_mid) * f(x_n) > 0:
+            x_n = x_mid
+        else:
+            x_n1 = x_mid
+
+    return x_mid
+
+
+# show_intervals([[-8.64, +5.5869]], 'Starting interval')
 
 intervals = scan_root_intervals([-8.64, +5.5869])
-show_intervals(intervals, 'Root intervals')
+# show_intervals(intervals, 'Root intervals')
+x = chord_method(intervals[0])
+print(f'{f(x):.20f}')
