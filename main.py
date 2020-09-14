@@ -51,9 +51,20 @@ def chord_method(interval, tolerance=1e-8):
     return x_mid
 
 
+def secant_method(starting_points, tolerance=1e-8):
+    x_n = starting_points[0]
+    x_n1 = starting_points[1]
+
+    while abs(f(x_n1)) > tolerance:
+        x_n1 = x_n1 - (x_n1 - x_n) / (f(x_n1) - f(x_n)) * f(x_n1)
+
+    return x_n1
+
+
 # show_intervals([[-8.64, +5.5869]], 'Starting interval')
 
 intervals = scan_root_intervals([-8.64, +5.5869])
 # show_intervals(intervals, 'Root intervals')
-x = chord_method(intervals[0])
+# x = chord_method(intervals[0])
+x = secant_method(intervals[0])
 print(f'{f(x):.20f}')
