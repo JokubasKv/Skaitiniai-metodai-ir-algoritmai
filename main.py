@@ -25,13 +25,13 @@ def show_intervals(intervals, title):
 
 def scan_root_intervals(all_roots_interval, step=0.1):
     results = []
-    previous = all_roots_interval[0]
-    x = all_roots_interval[0]
-    while x < all_roots_interval[1]:
-        x += step
-        if f(x) * f(previous) < 0:  # detects sign change
-            results.append([previous, x])
-        previous = x
+    x_n = all_roots_interval[0]
+    x_n1 = all_roots_interval[0]
+    while x_n1 < all_roots_interval[1]:
+        x_n1 += step
+        if f(x_n1) * f(x_n) < 0:  # detects sign change
+            results.append([x_n, x_n1])
+        x_n = x_n1
     return results
 
 
@@ -61,10 +61,28 @@ def secant_method(starting_points, tolerance=1e-8):
     return x_n1
 
 
-# show_intervals([[-8.64, +5.5869]], 'Starting interval')
+def scan_method(interval, step=0.1, tolerance=1e-8):
+    x_n = interval[0]
+    x_s = interval[0]
+    # x_n1 = interval[1]
+
+    # while(x_n1 - x_n) > tolerance:
+    while(abs(f(x_s))) > tolerance:
+        x_s += step
+        if f(x_s) * f(x_n) < 0:  # detects sign change
+            x_s -= step
+            step /= 2
+            x_n = x_s
+            # x_n1 = x_s + step
+
+    return x_s
+
 
 intervals = scan_root_intervals([-8.64, +5.5869])
+
+# show_intervals([[-8.64, +5.5869]], 'Starting interval')
 # show_intervals(intervals, 'Root intervals')
 # x = chord_method(intervals[0])
-x = secant_method(intervals[0])
+# x = secant_method(intervals[0])
+x = scan_method(intervals[0])
 print(f'{f(x):.20f}')
