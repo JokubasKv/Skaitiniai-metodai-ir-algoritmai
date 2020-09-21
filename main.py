@@ -13,6 +13,14 @@ def g(x):
     return (np.e ** -x) * np.cos(x) * np.sin(x ** 2 - 1)
 
 
+def v(c):
+    mass, g, time, speed = 60, 9.8, 4, 30
+    try:
+        return mass*g/c * (1 - np.e ** (-c*time/mass)) - speed
+    except ZeroDivisionError:
+        return v(1e-8)
+
+
 def display_function(intervals, func, title, x_lim, y_lim, x):
     plt.title(title)
     plt.ylim(y_lim)
@@ -102,10 +110,16 @@ def find_roots(root_intervals, func):
 print("Polynomial")
 intervals = scan_root_intervals([-8.64, +5.5869], f)
 display_function([[-8.64, +5.5869]], f, 'Starting interval', x_lim=(-10, +10), y_lim=(-2, +2), x=np.arange(-5, +5, 0.1))
-display_function(intervals, f, 'Root intervals', x_lim=(-10, +10), y_lim=(-2, +2), x=np.arange(-5, +5, 0.1))
+display_function(intervals, f, 'Polynomial root intervals', x_lim=(-10, +10), y_lim=(-2, +2), x=np.arange(-5, +5, 0.1))
 find_roots(intervals, f)
 
 print('Transcendental')
 intervals = scan_root_intervals([7, 8], g, 0.003)
-display_function(intervals, g, 'Root intervals', x_lim=(7, 8), y_lim=(-0.001, +0.001), x=np.arange(7, 8.01, 0.01))
+display_function(intervals, g, 'Transcendental root intervals', x_lim=(7, 8), y_lim=(-0.001, +0.001), x=np.arange(7, 8.01, 0.01))
 find_roots(intervals, g)
+
+print('Skydiver')
+intervals = scan_root_intervals([0.1, 10], v)
+display_function(intervals, v, 'Skydiver root intervals', x_lim=(-15, +30), y_lim=(-10, +15), x=np.arange(-15, +30, 0.1))
+find_roots(intervals, v)
+
