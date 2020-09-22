@@ -119,7 +119,7 @@ display_function(intervals, g, 'Transcendental root intervals', x_lim=(7, 8), y_
 find_roots(intervals, g)
 
 print('Skydiver')
-intervals = scan_root_intervals([0.1, 10], v)
-display_function(intervals, v, 'Skydiver root intervals', x_lim=(-15, +30), y_lim=(-10, +15), x=np.arange(-15, +30, 0.1))
-find_roots(intervals, v)
-
+result = chord_method([0, 20], v)
+print(f'Iterations: {result[0]}')
+print(f'Root: {result[1]}')
+print(f'Error: {v(result[1])}')
