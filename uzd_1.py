@@ -36,3 +36,5 @@ b = np.array([148, -37, 21, 53]).astype(np.float).reshape(-1, 1)
 
 A1 = np.hstack((A, b))
 print(gauss_jordan(A1))
+
+
