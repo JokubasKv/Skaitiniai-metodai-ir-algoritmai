@@ -30,14 +30,17 @@ def interpolated(x, a, n):
 
 
 
-n = 10 # crank up
+n = 15 # crank up
 i = np.arange(n)
-nodes = np.linspace(-1, 1, n).reshape(-1, 1)
+# nodes = np.linspace(-1, 1, n).reshape(-1, 1)
+no = np.linspace(-2, 3, n).reshape(-1, 1)
+nodes = to_chebyshev_interval(no, -2, 3)
 A = chebyshev_polynomial(nodes, i)
-data = f(nodes)
+data = f(no)
 coeffs = np.linalg.solve(A, data)
-x = np.linspace(-1, 1, 1000).reshape(-1, 1)
-A = chebyshev_polynomial(x, i)
+x = np.linspace(-2, 3, 1000).reshape(-1, 1)
+xc = to_chebyshev_interval(x, -2, 3)
+A = chebyshev_polynomial(xc, i)
 plt.plot(x, np.dot(A, coeffs), label='interpolated')
 plt.plot(x, f(x), label='original')
 plt.legend()
