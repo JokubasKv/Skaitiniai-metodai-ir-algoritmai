@@ -40,8 +40,8 @@ def show_symbolic_chebyshev(i, coeffs):
         A = symbolic_chebyshev_polynomial(xc, i)
         if i == 0:
             print(str(coeffs[i]) + ' +')
-        # elif i == 1:
-        #     print(str(coeffs[i]) + ' * (' + str(A) + ') +')
+        elif i == 1:
+            print(str(coeffs[i]) + ' * (' + str(A) + ') +')
         else:
             print(str(coeffs[i]) + ' * ' + str(A) + ' +')
 
