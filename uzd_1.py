@@ -49,8 +49,13 @@ def show_symbolic_chebyshev(i, coeffs):
 n = 15
 i = np.arange(n)
 
-x = np.linspace(-2, 3, n).reshape(-1, 1); plot_name = 'Equidistant nodes'  # use equidistant nodes
-# x = chebyshev_node(i, -2, 3, n).reshape(-1, 1); plot_name = 'Chebyshev nodes'  # use chebyshev nodes
+print('[1] Use equidistant nodes')
+print('[2] Use Chebyshev nodes')
+
+if int(input("Choice: ")) == 1:
+    x = np.linspace(-2, 3, n).reshape(-1, 1); plot_name = 'Equidistant nodes'  # use equidistant nodes
+else:
+    x = chebyshev_node(i, -2, 3, n).reshape(-1, 1); plot_name = 'Chebyshev nodes'  # use chebyshev nodes
 
 x_chebyshev = to_chebyshev_interval(x, -2, 3)
 A = chebyshev_polynomial(x_chebyshev, i)
