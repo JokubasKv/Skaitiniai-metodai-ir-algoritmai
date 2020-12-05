@@ -51,7 +51,7 @@ def euler():
         tt.append(t)
         hh.append(h)
 
-    show_results(vv, tt, hh, v, t, hp, 'Euler and odeint()')
+    show_results(vv, tt, hh, v, t, hp, 'Euler')
 
 def rk_4():
     t = t0
