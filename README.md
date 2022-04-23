@@ -1,11 +1,1 @@
-# Skaitiniai-metodai-ir-algoritmai
-
-[L1 Netiesinių lygčių sprendimas](https://github.com/d0ubletr0uble/Skaitiniai-metodai-ir-algoritmai/tree/Lab1)
-
-[L2 Lygčių sistemų sprendimas ir optimizavimas](https://github.com/d0ubletr0uble/Skaitiniai-metodai-ir-algoritmai/tree/Lab2)
-
-[L3 Interpoliavimas, aproksimavimas](https://github.com/d0ubletr0uble/Skaitiniai-metodai-ir-algoritmai/tree/Lab3)
-
-[L4 Paprastųjų diferencialinių lygčių sprendimas](https://github.com/d0ubletr0uble/Skaitiniai-metodai-ir-algoritmai/tree/Lab4)
-
-[Egzaminas](https://github.com/d0ubletr0uble/Skaitiniai-metodai-ir-algoritmai/tree/Egzaminas)
+# Academic group IFF-9/10, Student code: C5054. Better take it down, its not smart to have this repo public
